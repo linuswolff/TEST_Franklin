@@ -1,25 +1,21 @@
-<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/highlight/github.min.css"> <link rel=stylesheet  href="/css/franklin.css"> <link rel=stylesheet  href="/css/tufte.css"> <link rel=stylesheet  href="/css/latex.css"> <link rel=stylesheet  href="/css/adjust.css"> <link rel=icon  href="/assets/lw_initials.png"> <title>Here are some nice Plots.</title> <div id=layout > <div id=menu > <ul> <li><a href="/">Home</a> <li><a href="/menu1/">Code blocks</a> <li><a href="/menu2/">More goodies</a> <li><a href="/menu3/">Tags</a> <li><a href="/menu_mine/">nice plots</a> <li><a href="/menu_mine2/">just plots</a> </ul> </div> <div id=main > <div class=franklin-content ><h1 id=here_are_some_nice_plots ><a href="#here_are_some_nice_plots" class=header-anchor >Here are some nice Plots.</a></h1> <pre><code class="julia hljs"><span class=hljs-keyword >using</span> LinearAlgebra
+<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/highlight/github.min.css"> <link rel=stylesheet  href="/css/franklin.css"> <link rel=stylesheet  href="/css/tufte.css"> <link rel=stylesheet  href="/css/latex.css"> <link rel=stylesheet  href="/css/adjust.css"> <link rel=icon  href="/assets/lw_initials.png"> <title>nice plots</title> <div id=layout > <div id=menu > <ul> <li><a href="/">Home</a> <li><a href="/menu1/">Code blocks</a> <li><a href="/menu2/">More goodies</a> <li><a href="/menu3/">Tags</a> <li><a href="/menu_mine/">nice plots</a> <li><a href="/menu_mine2/">just plots</a> </ul> </div> <div id=main > <div class=franklin-content ><h1 id=here_are_some_nice_plots ><a href="#here_are_some_nice_plots" class=header-anchor >Here are some nice Plots.</a></h1> <pre><code class="julia hljs"><span class=hljs-keyword >using</span> LinearAlgebra
 a = [<span class=hljs-number >1</span>, <span class=hljs-number >2</span>, <span class=hljs-number >3</span>, <span class=hljs-number >3</span>, <span class=hljs-number >4</span>, <span class=hljs-number >5</span>, <span class=hljs-number >2</span>, <span class=hljs-number >2</span>]
 <span class=hljs-meta >@show</span> dot(a, a)
 println(dot(a, a))</code></pre> <p><strong>You can now show what this would look like:</strong></p> <pre><code class="plaintext hljs">dot(a, a) = 72
 72
-</code></pre> <pre><code class="julia hljs"><span class=hljs-keyword >using</span> Plots, DataFrames
-
-seq = <span class=hljs-number >0</span>:<span class=hljs-number >0.01</span>:<span class=hljs-number >10</span>
+</code></pre> <pre><code class="julia hljs">seq = <span class=hljs-number >0</span>:<span class=hljs-number >0.01</span>:<span class=hljs-number >10</span>
 vect = collect(seq)
 form4(x) = <span class=hljs-number >30</span> * sin(x + <span class=hljs-number >0.39</span>) + <span class=hljs-number >25</span>
 erg_form4 = zeros(<span class=hljs-number >1001</span>)
 
 <span class=hljs-keyword >for</span> i <span class=hljs-keyword >in</span> <span class=hljs-number >1</span>:length(vect)
     erg_form4[i] = form4(vect[i])
-<span class=hljs-keyword >end</span>
+<span class=hljs-keyword >end</span></code></pre> <p><strong>this gives:</strong> <pre><code class="plaintext hljs">ArgumentError: Package DataFrames not found in current path:
+- Run `import Pkg; Pkg.add(&quot;DataFrames&quot;)` to install the DataFrames package.
 
-<span class=hljs-meta >@show</span> round.(first(erg_form4, <span class=hljs-number >5</span>), digits = <span class=hljs-number >2</span>)
-theme(:ggplot2)
-p = plot(seq, erg_form4)
-savefig(p, <span class=hljs-string >&quot;plot.svg&quot;</span>)</code></pre> <pre><code class="plaintext hljs">ArgumentError: Package Plots not found in current path:
-- Run `import Pkg; Pkg.add(&quot;Plots&quot;)` to install the Plots package.
-
+</code></pre></p> <pre><code class="julia hljs">theme(:ggplot2)
+p = plot(seq, erg_form4, size = (<span class=hljs-number >700</span>,<span class=hljs-number >500</span>))
+savefig(p, <span class=hljs-string >&quot;plot.svg&quot;</span>)</code></pre> <pre><code class="plaintext hljs">UndefVarError: seq not defined
 </code></pre> <p><strong>lets see:</strong></p> <img src="/plot.svg" alt=""> <pre><code class="julia hljs">m = <span class=hljs-number >100</span>
 seq = <span class=hljs-number >0</span>:<span class=hljs-number >0.01</span>:<span class=hljs-number >10</span>
 form1(x) = m * exp(-<span class=hljs-number >0.5</span>x) + <span class=hljs-number >5</span>

@@ -1,5 +1,6 @@
 # This file was generated, do not modify it. # hide
-using Plots, DataFrames
+import Pkg; Pkg.add("Plots") #HIDE
+using Plots, DataFrames      #HIDE
 
 seq = 0:0.01:10
 vect = collect(seq)
@@ -10,7 +11,4 @@ for i in 1:length(vect)
     erg_form4[i] = form4(vect[i])
 end
 
-@show round.(first(erg_form4, 5), digits = 2)
-theme(:ggplot2)
-p = plot(seq, erg_form4)
-savefig(p, "plot.svg")
+println(round.(first(erg_form4, 5), digits = 2)) #HIDE
