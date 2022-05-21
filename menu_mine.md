@@ -15,7 +15,8 @@ println(dot(a, a))
 \output{./exdot.jl}
 
 ```julia:./test.jl
-using Plots, DataFrames
+import Pkg; Pkg.add("Plots") #HIDE
+using Plots, DataFrames      #HIDE
 
 seq = 0:0.01:10
 vect = collect(seq)
