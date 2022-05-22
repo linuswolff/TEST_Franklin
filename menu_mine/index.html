@@ -10,13 +10,10 @@ erg_form4 = zeros(<span class=hljs-number >1001</span>)
 
 <span class=hljs-keyword >for</span> i <span class=hljs-keyword >in</span> <span class=hljs-number >1</span>:length(vect)
     erg_form4[i] = form4(vect[i])
-<span class=hljs-keyword >end</span></code></pre> <p><strong>this gives:</strong> <pre><code class="plaintext hljs">ArgumentError: Package DataFrames not found in current path:
-- Run `import Pkg; Pkg.add(&quot;DataFrames&quot;)` to install the DataFrames package.
-
+<span class=hljs-keyword >end</span></code></pre> <p><strong>this gives:</strong> <pre><code class="plaintext hljs">[36.41, 36.68, 36.96, 37.23, 37.51]
 </code></pre></p> <pre><code class="julia hljs">theme(:ggplot2)
 p = plot(seq, erg_form4, size = (<span class=hljs-number >700</span>,<span class=hljs-number >500</span>))
-savefig(p, <span class=hljs-string >&quot;plot.svg&quot;</span>)</code></pre> <pre><code class="plaintext hljs">UndefVarError: seq not defined
-</code></pre> <p><strong>lets see:</strong></p> <img src="/plot.svg" alt=""> <pre><code class="julia hljs">m = <span class=hljs-number >100</span>
+savefig(p, <span class=hljs-string >&quot;plot.svg&quot;</span>)</code></pre> <p><strong>lets see:</strong></p> <img src="/plot.svg" alt=""> <pre><code class="julia hljs">m = <span class=hljs-number >100</span>
 seq = <span class=hljs-number >0</span>:<span class=hljs-number >0.01</span>:<span class=hljs-number >10</span>
 form1(x) = m * exp(-<span class=hljs-number >0.5</span>x) + <span class=hljs-number >5</span>
 form2(x) = m * <span class=hljs-number >0.011</span>x^<span class=hljs-number >2</span> - <span class=hljs-number >5</span>

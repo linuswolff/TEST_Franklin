@@ -1,5 +1,6 @@
 # This file was generated, do not modify it. # hide
-import Pkg; Pkg.add("Plots") #HIDE
+import Pkg; Pkg.add("Plots")   #HIDE
+import Pkg; Pkg.add("DataFrames") #HIDE
 using Plots, DataFrames      #HIDE
 
 seq = 0:0.01:10
