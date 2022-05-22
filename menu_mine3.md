@@ -2,7 +2,6 @@
 R code can be called by using `R"..."`:
 ```julia:./test5.jl
 using RCall
-theme(:ggplot2) #HIDE
 
 R"USmacro <- read.table('./_assets/USmacro.txt',
                          header = TRUE, dec = ',')"
