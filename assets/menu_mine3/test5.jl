@@ -1,6 +1,5 @@
 # This file was generated, do not modify it. # hide
 using RCall
-theme(:ggplot2) #HIDE
 
 R"USmacro <- read.table('./_assets/USmacro.txt',
                          header = TRUE, dec = ',')"
