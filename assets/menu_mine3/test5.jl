@@ -6,4 +6,4 @@ R"USmacro <- read.table('./_assets/USmacro.txt',
 
 USmacro = @rget USmacro #HIDE
 first(USmacro, 5)
-println(first(USmacro[:,1:7], 5)) #HIDE
+println(first(USmacro[:,1:7], 5))
