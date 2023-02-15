@@ -116,7 +116,7 @@ plot_3d(tmb_rgb_contrast, tmb_el_matrix, windowsize = c(800,800), zscale = 15, s
 ```
 \fig{/images/tmb_rgb_contrast_map_3d.png}
 
-\fig{/images/giphy.gif}
+\fig{/images/animation_tmb_small.gif}
 
 
 
