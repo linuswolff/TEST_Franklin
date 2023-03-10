@@ -62,6 +62,12 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>https://tlienart.github.io/FranklinTemplates.jl/eisbach/index.html</loc>
+    <lastmod>2023-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>https://tlienart.github.io/FranklinTemplates.jl/resume/index.html</loc>
     <lastmod>2023-03-10</lastmod>
     <changefreq>monthly</changefreq>
