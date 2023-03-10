@@ -4,13 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="refresh" content="300">
+    <!-- <meta http-equiv="refresh" content="300"> -->
     <title>Displaying HTML Content Using JavaScript</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             // Fetch the HTML content from the source URL
-            $.get("https://cors-anywhere.herokuapp.com/https://www.eisbachwetter.de/", function(data) {
+            // trying without cors for the deployed version
+            $.get("https://cors-anywhere.herokuapp.com/https://www.eisbachwetter.de/", function
+            $.get("https://www.eisbachwetter.de/", function(data) {
                 // Extract the desired HTML content
                 var height = $(data).find("h1#height.value-big").html();
                 var air = $(data).find("h1#air.value-big").html();
