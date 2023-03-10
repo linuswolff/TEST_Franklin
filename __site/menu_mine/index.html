@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+     <link rel="stylesheet" href="/libs/highlight/github.min.css">
+   
+    <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/tufte.css">
+<link rel="stylesheet" href="/css/latex.css">
+<link rel="stylesheet" href="/css/adjust.css"> <!-- sheet to overwrite some clashing styles -->
+<link rel="icon" href="/assets/lw_initials.png">
+
+     <title>nice plots</title>  
+
+    <link rel="icon" type="image/png" href="/assets/lw_initials.png"> <!-- to show tab icon -->
+
+</head>
+
+<body>
+<div id="layout">
+  <div id="menu">
+    <ul>
+      <li><a href="/">Home</a></li>
+ <!-- <li><a href="/menu1/">Code blocks</a></li>
+      <li><a href="/menu2/">More goodies</a></li>
+      <li><a href="/menu3/">Tags</a></li> -->
+      <li><a href="/menu_mine/">nice plots</a></li>
+      <li><a href="/menu_mine2/">just plots</a></li>
+      <li><a href="/menu_mine3/">CallR</a></li>
+      <!-- <li><a href="/menu_mine4/">NN with MNIST</a></li> -->
+      <li><a href="/menu_mine5/">map project</a></li>
+      <li><a href="/resume/">resume</a></li>
+      <li><a href="/eisbach/">eisbach</a></li>
+    </ul>
+  </div>
+  <div id="main">
+
+
+
+<!-- Content appended here --><div class="franklin-content"><h1 id="here_are_some_nice_plots"><a href="#here_are_some_nice_plots" class="header-anchor">Here are some nice Plots.</a></h1>
+<pre><code class="language-julia">using LinearAlgebra
+a &#61; &#91;1, 2, 3, 3, 4, 5, 2, 2&#93;
+@show dot&#40;a, a&#41;
+println&#40;dot&#40;a, a&#41;&#41;</code></pre>
+<p><strong>You can now show what this would look like:</strong></p>
+<pre><code class="plaintext code-output">dot(a, a) = 72
+72
+</code></pre>
+<pre><code class="language-julia">seq &#61; 0:0.01:10
+vect &#61; collect&#40;seq&#41;
+form4&#40;x&#41; &#61; 30 * sin&#40;x &#43; 0.39&#41; &#43; 25
+erg_form4 &#61; zeros&#40;1001&#41;
+
+for i in 1:length&#40;vect&#41;
+    erg_form4&#91;i&#93; &#61; form4&#40;vect&#91;i&#93;&#41;
+end</code></pre>
+<p><strong>this gives:</strong> <pre><code class="plaintext code-output">[36.41, 36.68, 36.96, 37.23, 37.51]
+</code></pre></p>
+<pre><code class="language-julia">theme&#40;:ggplot2&#41;
+p &#61; plot&#40;seq, erg_form4, size &#61; &#40;700,500&#41;&#41;
+savefig&#40;p, &quot;plot.svg&quot;&#41;</code></pre>
+
+<p><strong>lets see:</strong></p>
+<img src="/plot.svg" alt="">
+<pre><code class="language-julia">m &#61; 100
+seq &#61; 0:0.01:10
+form1&#40;x&#41; &#61; m * exp&#40;-0.5x&#41; &#43; 5
+form2&#40;x&#41; &#61; m * 0.011x^2 - 5
+form3&#40;x&#41; &#61; 15 * abs&#40;x - 4.37&#41;
+form4&#40;x&#41; &#61; 30 * sin&#40;x &#43; 0.39&#41; &#43; 25</code></pre>
+
+<p><strong>nice Plot from above formulas:</strong></p>
+<img src="/plot1.svg" alt="">
+<div class="page-foot">
+    <a>linus wolff, personal website.</a>
+</div>
+</div><!-- CONTENT ENDS HERE -->
+        </div> <!-- end of id=main -->
+    </div> <!-- end of id=layout -->
+    
+    
+        <script src="/libs/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>
