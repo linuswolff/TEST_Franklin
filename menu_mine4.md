@@ -1,6 +1,6 @@
 # MNIST neural net
 
-R code can be called by using `R"..."`:
+<!-- R code can be called by using `R"..."`:
 ```julia:./test7.jl
 using RCall
 
@@ -142,4 +142,4 @@ println(pred_acc_new)
 ```
 \output{./test7.jl}
 
-HELLO
+HELLO -->
