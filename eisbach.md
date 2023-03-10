@@ -11,8 +11,8 @@
         $(document).ready(function() {
             // Fetch the HTML content from the source URL
             // trying without cors for the deployed version
-            // $.get("https://cors-anywhere.herokuapp.com/https://www.eisbachwetter.de/", function
-            $.get("https://www.eisbachwetter.de/", function(data) {
+            $.get("https://cors-anywhere.herokuapp.com/https://www.eisbachwetter.de/", function(data) {
+            // $.get("https://www.eisbachwetter.de/", function(data) {
                 // Extract the desired HTML content
                 var height = $(data).find("h1#height.value-big").html();
                 var air = $(data).find("h1#air.value-big").html();
