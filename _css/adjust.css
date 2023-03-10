@@ -51,7 +51,7 @@
   transform: scaleX(1);
 }
 
-.franklin-content { padding-left: 10%; }
+.franklin-content { padding-left: 5%; }
 .franklin-content { padding-right: 5%; }
 
 @media (max-width: 940px) {
@@ -69,7 +69,7 @@
 
   #main {
     float: none;
-    width: 100%;
+    width: 120%;
   }
 }
 
@@ -77,8 +77,8 @@
   #menu {
     margin-top: 100px;
     float: left;
-    width: 100px;
-    text-align: right;
+    width: 150px;
+    text-align: center;
   }
   .franklin-content { width: 600px; }
 }
@@ -86,3 +86,16 @@
 @media (min-width: 1000px) {
   .franklin-content { width: 660px; }
 }
+
+
+
+/* my adjustments */
+
+/* #display-container {
+			font-size: 24px;
+			font-weight: bold;
+			color: red;
+			padding: 10px;
+			border: 1px solid black;
+			margin: 10px;
+		} */
