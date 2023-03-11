@@ -46,9 +46,9 @@ Now let's test the model with some images from the internet.
 
 ~~~
 <div style="display:flex; justify-content:center;">
-  <img src="https://www.radiolippe.de/fileadmin/_processed_/f/0/csm_50-kmh-2020-02-13-113631_7e558c9f90.jpg" style="width:30%; margin:0; padding:0;">
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS68TIPydKxzNlVSxBfTx1pK_fpuLH8XeFfag&usqp=CAU" style="width:30%; margin:0; padding:0 25px;">
-  <img src="https://www.mobiliter.eu/wp-content/uploads/Rechts-vor-Links-Verkehrsschild.jpg" style="width:30%;
+  <img src="/images/50kmh_sign.jpeg" style="width:30%; margin:0; padding:0;">
+  <img src="/images/30kmh_sign.jpeg" style="width:30%; margin:0; padding:0 25px;">
+  <img src="/images/vorfahrt_gewähren_sign.jpeg" style="width:30%;
   margin:0; padding:0;">
 </div>
 ~~~
@@ -113,7 +113,7 @@ However, it is not perfect. Let's see what happens if we give it an image where 
 
 ~~~
 <div style="display:flex; justify-content:center;">
-  <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Saale-024.jpg/800px-Saale-024.jpg' style="width:70%; margin:0; padding:0;">
+  <img src='/images/stopsign_schwer.jpeg' style="width:70%; margin:0; padding:0;">
 </div>
 ~~~
 

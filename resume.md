@@ -1,8 +1,8 @@
 # Resume
 
 *Alternatively, you can view the resume externally in 
-[english](https://docs.google.com/viewer?url=https://github.com/linuswolff/linuswolff.github.io/raw/4a16072291e331a456d97f3b9493315a3fabf8ee/resume_test.pdf) or 
-[german](https://docs.google.com/viewer?url=https://github.com/linuswolff/linuswolff.github.io/raw/4a16072291e331a456d97f3b9493315a3fabf8ee/resume_test.pdf).*
+[english](/resume_test.pdf) or 
+[german](/resume_test.pdf).*
 
 ~~~
 <head>
