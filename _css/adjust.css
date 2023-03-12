@@ -69,7 +69,7 @@
 
   #main {
     float: none;
-    width: 120%;
+    width: 100%;
   }
 }
 
@@ -80,11 +80,11 @@
     width: 150px;
     text-align: center;
   }
-  .franklin-content { width: 600px; }
+  .franklin-content { width: 750px; }
 }
 
 @media (min-width: 1000px) {
-  .franklin-content { width: 660px; }
+  .franklin-content { width: 800px; }
 }
 
 

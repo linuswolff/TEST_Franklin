@@ -1,4 +1,6 @@
-@def title = "nice plots"
+<!-- not used page so commented out -->
+
+<!-- @def title = "nice plots"
 @def lang = "julia"
 
 # Here are some nice Plots.
@@ -69,5 +71,5 @@ savefig(p1, "plot1.svg")#hide
 
 \fig{/plot1.svg}
 
-
+ -->
 

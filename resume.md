@@ -1,18 +1,18 @@
 # Resume
 
 *Alternatively, you can view the resume externally in 
-[english](/resume_test.pdf) or 
-[german](/resume_test.pdf).*
+[english](/resume_english.pdf) or 
+[german](/resume_german.pdf).*
 
 ~~~
 <head>
 	<script>
 		function switchVersion() {
 			var pdfObject = document.getElementById("pdfObject");
-			if (pdfObject.data == "/resume_test.pdf") {
-				pdfObject.data = "/resume_test.pdf";
+			if (pdfObject.data == "/resume_english.pdf") {
+				pdfObject.data = "/resume_english.pdf";
 			} else {
-				pdfObject.data = "/resume_test.pdf";
+				pdfObject.data = "/resume_english.pdf";
 			}
 		}
 	</script>
@@ -20,7 +20,7 @@
 <body>
     <button onclick="switchVersion()">english / german</button>
     <br></br>
-	<object id="pdfObject" data="/resume_test.pdf" type="application/pdf" width="550px" height="800px">
+	<object id="pdfObject" data="/resume_english.pdf" type="application/pdf" width="750px" height="1061px">
 	</object>
 </body>
 ~~~
