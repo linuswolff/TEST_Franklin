@@ -1,49 +1,133 @@
-<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/katex/katex.min.css"> <link rel=stylesheet  href="/libs/highlight/github.min.css"> <link rel=stylesheet  href="/css/franklin.css"> <link rel=stylesheet  href="/css/tufte.css"> <link rel=stylesheet  href="/css/latex.css"> <link rel=stylesheet  href="/css/adjust.css"> <link rel=icon  href="/assets/lw_initials.png"> <title>map project</title> <link rel=icon  type="image/png" href="/assets/lw_initials.png"> <div id=layout > <div id=menu > <ul> <li><a href="/">Home</a> <li><a href="/resume/">Resume</a> <li><a href="/straßenschilder/">Straßenschilder</a> <li><a href="/map_project/">TMB 3D Map</a> <li><a href="/CallR/">CallR</a> <li><a href="/eisbach/">Eisbach</a> </ul> </div> <div id=main > <div class=franklin-content ><h1 id=map_project ><a href="#map_project" class=header-anchor >map project</a></h1> <p>Here will be the full map tutorial</p> <pre><code class="R hljs">library<span class=hljs-punctuation >(</span>rayshader<span class=hljs-punctuation >)</span>
-library<span class=hljs-punctuation >(</span>sp<span class=hljs-punctuation >)</span>
-library<span class=hljs-punctuation >(</span>raster<span class=hljs-punctuation >)</span>
-library<span class=hljs-punctuation >(</span>scales<span class=hljs-punctuation >)</span></code></pre> <p>We will then read in the raster elevation data and visualize it.</p> <pre><code class="R hljs">elevation1 <span class=hljs-operator >=</span> raster<span class=hljs-operator >::</span>raster<span class=hljs-punctuation >(</span><span class=hljs-string >&quot;N46E006.hgt&quot;</span><span class=hljs-punctuation >)</span>
-elevation2 <span class=hljs-operator >=</span> raster<span class=hljs-operator >::</span>raster<span class=hljs-punctuation >(</span><span class=hljs-string >&quot;N46E007.hgt&quot;</span><span class=hljs-punctuation >)</span>
-elevation3 <span class=hljs-operator >=</span> raster<span class=hljs-operator >::</span>raster<span class=hljs-punctuation >(</span><span class=hljs-string >&quot;N45E006.hgt&quot;</span><span class=hljs-punctuation >)</span>
-elevation4 <span class=hljs-operator >=</span> raster<span class=hljs-operator >::</span>raster<span class=hljs-punctuation >(</span><span class=hljs-string >&quot;N45E007.hgt&quot;</span><span class=hljs-punctuation >)</span>
-tmb_elevation <span class=hljs-operator >=</span> raster<span class=hljs-operator >::</span>merge<span class=hljs-punctuation >(</span>elevation1<span class=hljs-punctuation >,</span>elevation2<span class=hljs-punctuation >,</span>elevation3<span class=hljs-punctuation >,</span>elevation4<span class=hljs-punctuation >)</span>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="/libs/katex/katex.min.css">
+     
+     <link rel="stylesheet" href="/libs/highlight/github.min.css">
+   
+    <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/tufte.css">
+<link rel="stylesheet" href="/css/latex.css">
+<link rel="stylesheet" href="/css/adjust.css"> <!-- sheet to overwrite some clashing styles -->
+<link rel="icon" href="/assets/lw_initials.png">
 
-height_shade<span class=hljs-punctuation >(</span>raster_to_matrix<span class=hljs-punctuation >(</span>tmb_elevation<span class=hljs-punctuation >)</span><span class=hljs-punctuation >)</span> <span class=hljs-operator >|&gt;</span> plot_map<span class=hljs-punctuation >(</span><span class=hljs-punctuation >)</span></code></pre> <img src="/images/elev_data.png" alt=""> <p>Next, we can read in the satellite imagery data.</p> <pre><code class="R hljs">tmb_r <span class=hljs-operator >&lt;-</span> raster<span class=hljs-operator >::</span>raster<span class=hljs-punctuation >(</span><span class=hljs-string >&quot;LC08_L1TP_195028_20220918_20220928_02_T1_B4.TIF&quot;</span><span class=hljs-punctuation >)</span>
-tmb_g <span class=hljs-operator >&lt;-</span> raster<span class=hljs-operator >::</span>raster<span class=hljs-punctuation >(</span><span class=hljs-string >&quot;LC08_L1TP_195028_20220918_20220928_02_T1_B3.TIF&quot;</span><span class=hljs-punctuation >)</span>
-tmb_b <span class=hljs-operator >&lt;-</span> raster<span class=hljs-operator >::</span>raster<span class=hljs-punctuation >(</span><span class=hljs-string >&quot;LC08_L1TP_195028_20220918_20220928_02_T1_B2.TIF&quot;</span><span class=hljs-punctuation >)</span>
-tmb_rgb <span class=hljs-operator >&lt;-</span> raster<span class=hljs-operator >::</span>stack<span class=hljs-punctuation >(</span>tmb_r<span class=hljs-punctuation >,</span> tmb_g<span class=hljs-punctuation >,</span> tmb_b<span class=hljs-punctuation >)</span>
+     <title>map project</title>  
 
-raster<span class=hljs-operator >::</span>plotRGB<span class=hljs-punctuation >(</span>tmb_rgb<span class=hljs-punctuation >,</span> scale <span class=hljs-operator >=</span> <span class=hljs-number >255</span><span class=hljs-operator >^</span><span class=hljs-number >2</span><span class=hljs-punctuation >)</span></code></pre> <img src="/images/sat_image.png" alt=""> <p>This image is awfully dark. Let&#39;s brighten it by doing a gamma correction.</p> <pre><code class="R hljs">tmb_rgb_corrected <span class=hljs-operator >&lt;-</span> <span class=hljs-built_in >sqrt</span><span class=hljs-punctuation >(</span>tmb_rgb<span class=hljs-punctuation >)</span>
+    <link rel="icon" type="image/png" href="/assets/lw_initials.png"> <!-- to show tab icon -->
 
-raster<span class=hljs-operator >::</span>plotRGB<span class=hljs-punctuation >(</span>tmb_rgb_corrected<span class=hljs-punctuation >)</span></code></pre> <img src="/images/sat_image_corrected.png" alt=""> <p>If we take a look at the coordinate reference systems of our two datasets, we can see that they differ.</p> <pre><code class="R hljs">raster<span class=hljs-operator >::</span>crs<span class=hljs-punctuation >(</span>tmb_r<span class=hljs-punctuation >)</span> <span class=hljs-comment ># +proj=utm +zone=32 +datum=WGS84 +units=m +no_defs </span>
-raster<span class=hljs-operator >::</span>crs<span class=hljs-punctuation >(</span>tmb_elevation<span class=hljs-punctuation >)</span> <span class=hljs-comment ># +proj=longlat +datum=WGS84 +no_defs</span>
+</head>
 
-tmb_elevation_utm <span class=hljs-operator >=</span> raster<span class=hljs-operator >::</span>projectRaster<span class=hljs-punctuation >(</span>tmb_elevation<span class=hljs-punctuation >,</span> crs <span class=hljs-operator >=</span> crs<span class=hljs-punctuation >(</span>tmb_r<span class=hljs-punctuation >)</span><span class=hljs-punctuation >,</span> method <span class=hljs-operator >=</span> <span class=hljs-string >&quot;bilinear&quot;</span><span class=hljs-punctuation >)</span>
-crs<span class=hljs-punctuation >(</span>tmb_elevation_utm<span class=hljs-punctuation >)</span> <span class=hljs-comment ># +proj=utm +zone=32 +datum=WGS84 +units=m +no_defs -- it worked</span></code></pre> <p>Finally, we can crop the region to our specified area, which in my case is roughly the route of the Tour du Mont Blanc.</p> <pre><code class="R hljs">bottom_left <span class=hljs-operator >=</span> <span class=hljs-built_in >c</span><span class=hljs-punctuation >(</span>y <span class=hljs-operator >=</span> <span class=hljs-number >6.620446</span><span class=hljs-punctuation >,</span> x <span class=hljs-operator >=</span> <span class=hljs-number >45.657366</span><span class=hljs-punctuation >)</span>
-top_right   <span class=hljs-operator >=</span> <span class=hljs-built_in >c</span><span class=hljs-punctuation >(</span>y <span class=hljs-operator >=</span> <span class=hljs-number >7.222736</span><span class=hljs-punctuation >,</span> x <span class=hljs-operator >=</span> <span class=hljs-number >46.053004</span><span class=hljs-punctuation >)</span>
+<body>
+<div id="layout">
+  <div id="menu">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/resume/">Resume</a></li>
+      <li><a href="/straßenschilder/">Straßenschilder</a></li>
+      <li><a href="/map_project/">TMB 3D Map</a></li>
+      <li><a href="/CallR/">CallR</a></li>
+      <li><a href="/eisbach/">Eisbach</a></li>
+      <!-- <li><a href="/plots_mine/">nice plots</a></li> -->
+      <!-- <li><a href="/MNIST_NN/">NN with MNIST</a></li> -->
+    </ul>
+  </div>
+  <div id="main">
 
-extent_latlong <span class=hljs-operator >=</span> sp<span class=hljs-operator >::</span>SpatialPoints<span class=hljs-punctuation >(</span>rbind<span class=hljs-punctuation >(</span>bottom_left<span class=hljs-punctuation >,</span> top_right<span class=hljs-punctuation >)</span><span class=hljs-punctuation >,</span> proj4string<span class=hljs-operator >=</span>sp<span class=hljs-operator >::</span>CRS<span class=hljs-punctuation >(</span><span class=hljs-string >&quot;+proj=longlat +ellps=WGS84 +datum=WGS84&quot;</span><span class=hljs-punctuation >)</span><span class=hljs-punctuation >)</span>
-<span class=hljs-comment >#extent_utm = sp::spTransform(extent_latlong, raster::crs(tmb_elevation_utm))</span>
 
-e <span class=hljs-operator >=</span> raster<span class=hljs-operator >::</span>extent<span class=hljs-punctuation >(</span>extent_latlong<span class=hljs-punctuation >)</span></code></pre> <p>The resulting extent e is:</p> <p>class : Extent xmin : 6.620446 xmax : 7.222736 ymin : 45.65737 ymax : 46.053</p> <p>Our datasets can now be cropped according to the extent <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:0.4306em;"></span><span class="mord mathnormal">e</span></span></span></span> we specified.</p> <pre><code class="R hljs">tmb_test <span class=hljs-operator >&lt;-</span> raster<span class=hljs-operator >::</span>projectRaster<span class=hljs-punctuation >(</span>tmb_elevation_utm<span class=hljs-punctuation >,</span> crs <span class=hljs-operator >=</span> crs<span class=hljs-punctuation >(</span>tmb_elevation<span class=hljs-punctuation >)</span><span class=hljs-punctuation >,</span> method <span class=hljs-operator >=</span> <span class=hljs-string >&quot;bilinear&quot;</span><span class=hljs-punctuation >)</span>
-tmb_test_rgb <span class=hljs-operator >&lt;-</span> raster<span class=hljs-operator >::</span>projectRaster<span class=hljs-punctuation >(</span>tmb_rgb_corrected<span class=hljs-punctuation >,</span> crs <span class=hljs-operator >=</span> crs<span class=hljs-punctuation >(</span>tmb_elevation<span class=hljs-punctuation >)</span><span class=hljs-punctuation >,</span> method <span class=hljs-operator >=</span> <span class=hljs-string >&quot;bilinear&quot;</span><span class=hljs-punctuation >)</span>
 
-tmb_rgb_cropped <span class=hljs-operator >=</span> raster<span class=hljs-operator >::</span>crop<span class=hljs-punctuation >(</span>tmb_test_rgb<span class=hljs-punctuation >,</span> e<span class=hljs-punctuation >)</span>
-elevation_cropped <span class=hljs-operator >=</span> raster<span class=hljs-operator >::</span>crop<span class=hljs-punctuation >(</span>tmb_test<span class=hljs-punctuation >,</span> e<span class=hljs-punctuation >)</span>
+<!-- Content appended here --><div class="franklin-content"><h1 id="map_project"><a href="#map_project" class="header-anchor">map project</a></h1>
+<p>Here will be the full map tutorial</p>
+<pre><code class="language-R">library&#40;rayshader&#41;
+library&#40;sp&#41;
+library&#40;raster&#41;
+library&#40;scales&#41;</code></pre>
+<p>We will then read in the raster elevation data and visualize it.</p>
+<pre><code class="language-R">elevation1 &#61; raster::raster&#40;&quot;N46E006.hgt&quot;&#41;
+elevation2 &#61; raster::raster&#40;&quot;N46E007.hgt&quot;&#41;
+elevation3 &#61; raster::raster&#40;&quot;N45E006.hgt&quot;&#41;
+elevation4 &#61; raster::raster&#40;&quot;N45E007.hgt&quot;&#41;
+tmb_elevation &#61; raster::merge&#40;elevation1,elevation2,elevation3,elevation4&#41;
 
-<span class=hljs-built_in >names</span><span class=hljs-punctuation >(</span>tmb_rgb_cropped<span class=hljs-punctuation >)</span> <span class=hljs-operator >=</span> <span class=hljs-built_in >c</span><span class=hljs-punctuation >(</span><span class=hljs-string >&quot;r&quot;</span><span class=hljs-punctuation >,</span><span class=hljs-string >&quot;g&quot;</span><span class=hljs-punctuation >,</span><span class=hljs-string >&quot;b&quot;</span><span class=hljs-punctuation >)</span>
+height_shade&#40;raster_to_matrix&#40;tmb_elevation&#41;&#41; |&gt; plot_map&#40;&#41;</code></pre>
+<img src="/images/elev_data.png" alt="">
+<p>Next, we can read in the satellite imagery data.</p>
+<pre><code class="language-R">tmb_r &lt;- raster::raster&#40;&quot;LC08_L1TP_195028_20220918_20220928_02_T1_B4.TIF&quot;&#41;
+tmb_g &lt;- raster::raster&#40;&quot;LC08_L1TP_195028_20220918_20220928_02_T1_B3.TIF&quot;&#41;
+tmb_b &lt;- raster::raster&#40;&quot;LC08_L1TP_195028_20220918_20220928_02_T1_B2.TIF&quot;&#41;
+tmb_rgb &lt;- raster::stack&#40;tmb_r, tmb_g, tmb_b&#41;
 
-tmb_r_cropped <span class=hljs-operator >=</span> rayshader<span class=hljs-operator >::</span>raster_to_matrix<span class=hljs-punctuation >(</span>tmb_rgb_cropped<span class=hljs-operator >$</span>r<span class=hljs-punctuation >)</span>
-tmb_g_cropped <span class=hljs-operator >=</span> rayshader<span class=hljs-operator >::</span>raster_to_matrix<span class=hljs-punctuation >(</span>tmb_rgb_cropped<span class=hljs-operator >$</span>g<span class=hljs-punctuation >)</span>
-tmb_b_cropped <span class=hljs-operator >=</span> rayshader<span class=hljs-operator >::</span>raster_to_matrix<span class=hljs-punctuation >(</span>tmb_rgb_cropped<span class=hljs-operator >$</span>b<span class=hljs-punctuation >)</span>
+raster::plotRGB&#40;tmb_rgb, scale &#61; 255^2&#41;</code></pre>
+<img src="/images/sat_image.png" alt="">
+<p>This image is awfully dark. Let&#39;s brighten it by doing a gamma correction.</p>
+<pre><code class="language-R">tmb_rgb_corrected &lt;- sqrt&#40;tmb_rgb&#41;
 
-tmb_el_matrix <span class=hljs-operator >=</span> rayshader<span class=hljs-operator >::</span>raster_to_matrix<span class=hljs-punctuation >(</span>elevation_cropped<span class=hljs-punctuation >)</span>
+raster::plotRGB&#40;tmb_rgb_corrected&#41;</code></pre>
+<img src="/images/sat_image_corrected.png" alt="">
+<p>If we take a look at the coordinate reference systems of our two datasets, we can see that they differ.</p>
+<pre><code class="language-R">raster::crs&#40;tmb_r&#41; # &#43;proj&#61;utm &#43;zone&#61;32 &#43;datum&#61;WGS84 &#43;units&#61;m &#43;no_defs 
+raster::crs&#40;tmb_elevation&#41; # &#43;proj&#61;longlat &#43;datum&#61;WGS84 &#43;no_defs
 
-tmb_rgb_array <span class=hljs-operator >=</span> array<span class=hljs-punctuation >(</span><span class=hljs-number >0</span><span class=hljs-punctuation >,</span><span class=hljs-built_in >dim</span><span class=hljs-operator >=</span><span class=hljs-built_in >c</span><span class=hljs-punctuation >(</span>nrow<span class=hljs-punctuation >(</span>tmb_r_cropped<span class=hljs-punctuation >)</span><span class=hljs-punctuation >,</span>ncol<span class=hljs-punctuation >(</span>tmb_r_cropped<span class=hljs-punctuation >)</span><span class=hljs-punctuation >,</span><span class=hljs-number >3</span><span class=hljs-punctuation >)</span><span class=hljs-punctuation >)</span>
+tmb_elevation_utm &#61; raster::projectRaster&#40;tmb_elevation, crs &#61; crs&#40;tmb_r&#41;, method &#61; &quot;bilinear&quot;&#41;
+crs&#40;tmb_elevation_utm&#41; # &#43;proj&#61;utm &#43;zone&#61;32 &#43;datum&#61;WGS84 &#43;units&#61;m &#43;no_defs -- it worked</code></pre>
+<p>Finally, we can crop the region to our specified area, which in my case is roughly the route of the Tour du Mont Blanc.</p>
+<pre><code class="language-R">bottom_left &#61; c&#40;y &#61; 6.620446, x &#61; 45.657366&#41;
+top_right   &#61; c&#40;y &#61; 7.222736, x &#61; 46.053004&#41;
 
-tmb_rgb_array<span class=hljs-punctuation >[</span><span class=hljs-punctuation >,</span><span class=hljs-punctuation >,</span><span class=hljs-number >1</span><span class=hljs-punctuation >]</span> <span class=hljs-operator >=</span> tmb_r_cropped<span class=hljs-operator >/</span><span class=hljs-number >255</span> <span class=hljs-comment >#Red layer</span>
-tmb_rgb_array<span class=hljs-punctuation >[</span><span class=hljs-punctuation >,</span><span class=hljs-punctuation >,</span><span class=hljs-number >2</span><span class=hljs-punctuation >]</span> <span class=hljs-operator >=</span> tmb_g_cropped<span class=hljs-operator >/</span><span class=hljs-number >255</span> <span class=hljs-comment >#Blue layer</span>
-tmb_rgb_array<span class=hljs-punctuation >[</span><span class=hljs-punctuation >,</span><span class=hljs-punctuation >,</span><span class=hljs-number >3</span><span class=hljs-punctuation >]</span> <span class=hljs-operator >=</span> tmb_b_cropped<span class=hljs-operator >/</span><span class=hljs-number >255</span> <span class=hljs-comment >#Green layer</span>
+extent_latlong &#61; sp::SpatialPoints&#40;rbind&#40;bottom_left, top_right&#41;, proj4string&#61;sp::CRS&#40;&quot;&#43;proj&#61;longlat &#43;ellps&#61;WGS84 &#43;datum&#61;WGS84&quot;&#41;&#41;
+#extent_utm &#61; sp::spTransform&#40;extent_latlong, raster::crs&#40;tmb_elevation_utm&#41;&#41;
 
-tmb_rgb_array <span class=hljs-operator >=</span> aperm<span class=hljs-punctuation >(</span>tmb_rgb_array<span class=hljs-punctuation >,</span> <span class=hljs-built_in >c</span><span class=hljs-punctuation >(</span><span class=hljs-number >2</span><span class=hljs-punctuation >,</span><span class=hljs-number >1</span><span class=hljs-punctuation >,</span><span class=hljs-number >3</span><span class=hljs-punctuation >)</span><span class=hljs-punctuation >)</span></code></pre> <p>As a last step we rescale for improved contrast.</p> <pre><code class="R hljs">tmb_rgb_contrast <span class=hljs-operator >=</span> scales<span class=hljs-operator >::</span>rescale<span class=hljs-punctuation >(</span>tmb_rgb_array<span class=hljs-punctuation >,</span>to<span class=hljs-operator >=</span><span class=hljs-built_in >c</span><span class=hljs-punctuation >(</span><span class=hljs-number >0</span><span class=hljs-punctuation >,</span><span class=hljs-number >1</span><span class=hljs-punctuation >)</span><span class=hljs-punctuation >)</span>
-plot_map<span class=hljs-punctuation >(</span>tmb_rgb_contrast<span class=hljs-punctuation >)</span></code></pre> <img src="/images/tmb_rgb_contrast_map.png" alt=""> <p>Our map can now be visualized in various ways. For example, let&#39;s plot it in 3D.</p> <pre><code class="R hljs">plot_3d<span class=hljs-punctuation >(</span>tmb_rgb_contrast<span class=hljs-punctuation >,</span> tmb_el_matrix<span class=hljs-punctuation >,</span> windowsize <span class=hljs-operator >=</span> <span class=hljs-built_in >c</span><span class=hljs-punctuation >(</span><span class=hljs-number >800</span><span class=hljs-punctuation >,</span><span class=hljs-number >800</span><span class=hljs-punctuation >)</span><span class=hljs-punctuation >,</span> zscale <span class=hljs-operator >=</span> <span class=hljs-number >15</span><span class=hljs-punctuation >,</span> shadowdepth <span class=hljs-operator >=</span> <span class=hljs-operator >-</span><span class=hljs-number >50</span><span class=hljs-punctuation >,</span>
-        zoom<span class=hljs-operator >=</span><span class=hljs-number >0.5</span><span class=hljs-punctuation >,</span> phi<span class=hljs-operator >=</span><span class=hljs-number >45</span><span class=hljs-punctuation >,</span>theta<span class=hljs-operator >=</span><span class=hljs-operator >-</span><span class=hljs-number >45</span><span class=hljs-punctuation >,</span>fov<span class=hljs-operator >=</span><span class=hljs-number >70</span><span class=hljs-punctuation >,</span> background <span class=hljs-operator >=</span> <span class=hljs-string >&quot;#F2E1D0&quot;</span><span class=hljs-punctuation >,</span> shadowcolor <span class=hljs-operator >=</span> <span class=hljs-string >&quot;#523E2B&quot;</span><span class=hljs-punctuation >)</span></code></pre> <img src="/images/tmb_rgb_contrast_map_3d.png" alt=""> <img src="/images/animation_tmb.gif" alt=""> <div class=page-foot > <a>linus wolff, personal website.</a> </div> </div> </div> </div>
+e &#61; raster::extent&#40;extent_latlong&#41;</code></pre>
+<p>The resulting extent e is:</p>
+<p>class      : Extent  xmin       : 6.620446  xmax       : 7.222736  ymin       : 45.65737  ymax       : 46.053</p>
+<p>Our datasets can now be cropped according to the extent \(e\) we specified.</p>
+<pre><code class="language-R">tmb_test &lt;- raster::projectRaster&#40;tmb_elevation_utm, crs &#61; crs&#40;tmb_elevation&#41;, method &#61; &quot;bilinear&quot;&#41;
+tmb_test_rgb &lt;- raster::projectRaster&#40;tmb_rgb_corrected, crs &#61; crs&#40;tmb_elevation&#41;, method &#61; &quot;bilinear&quot;&#41;
+
+tmb_rgb_cropped &#61; raster::crop&#40;tmb_test_rgb, e&#41;
+elevation_cropped &#61; raster::crop&#40;tmb_test, e&#41;
+
+names&#40;tmb_rgb_cropped&#41; &#61; c&#40;&quot;r&quot;,&quot;g&quot;,&quot;b&quot;&#41;
+
+tmb_r_cropped &#61; rayshader::raster_to_matrix&#40;tmb_rgb_cropped&#36;r&#41;
+tmb_g_cropped &#61; rayshader::raster_to_matrix&#40;tmb_rgb_cropped&#36;g&#41;
+tmb_b_cropped &#61; rayshader::raster_to_matrix&#40;tmb_rgb_cropped&#36;b&#41;
+
+tmb_el_matrix &#61; rayshader::raster_to_matrix&#40;elevation_cropped&#41;
+
+tmb_rgb_array &#61; array&#40;0,dim&#61;c&#40;nrow&#40;tmb_r_cropped&#41;,ncol&#40;tmb_r_cropped&#41;,3&#41;&#41;
+
+tmb_rgb_array&#91;,,1&#93; &#61; tmb_r_cropped/255 #Red layer
+tmb_rgb_array&#91;,,2&#93; &#61; tmb_g_cropped/255 #Blue layer
+tmb_rgb_array&#91;,,3&#93; &#61; tmb_b_cropped/255 #Green layer
+
+tmb_rgb_array &#61; aperm&#40;tmb_rgb_array, c&#40;2,1,3&#41;&#41;</code></pre>
+<p>As a last step we rescale for improved contrast.</p>
+<pre><code class="language-R">tmb_rgb_contrast &#61; scales::rescale&#40;tmb_rgb_array,to&#61;c&#40;0,1&#41;&#41;
+plot_map&#40;tmb_rgb_contrast&#41;</code></pre>
+<img src="/images/tmb_rgb_contrast_map.png" alt="">
+<p>Our map can now be visualized in various ways. For example, let&#39;s plot it in 3D.</p>
+<pre><code class="language-R">plot_3d&#40;tmb_rgb_contrast, tmb_el_matrix, windowsize &#61; c&#40;800,800&#41;, zscale &#61; 15, shadowdepth &#61; -50,
+        zoom&#61;0.5, phi&#61;45,theta&#61;-45,fov&#61;70, background &#61; &quot;#F2E1D0&quot;, shadowcolor &#61; &quot;#523E2B&quot;&#41;</code></pre>
+<img src="/images/tmb_rgb_contrast_map_3d.png" alt="">
+<img src="/images/animation_tmb.gif" alt="">
+<div class="page-foot">
+    <a>linus wolff</a>
+</div>
+</div><!-- CONTENT ENDS HERE -->
+        </div> <!-- end of id=main -->
+    </div> <!-- end of id=layout -->
+    
+        <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+    
+    
+        <script src="/libs/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>

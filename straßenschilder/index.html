@@ -1,28 +1,81 @@
-<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/highlight/github.min.css"> <link rel=stylesheet  href="/css/franklin.css"> <link rel=stylesheet  href="/css/tufte.css"> <link rel=stylesheet  href="/css/latex.css"> <link rel=stylesheet  href="/css/adjust.css"> <link rel=icon  href="/assets/lw_initials.png"> <title>Straßenschilder NN</title> <link rel=icon  type="image/png" href="/assets/lw_initials.png"> <div id=layout > <div id=menu > <ul> <li><a href="/">Home</a> <li><a href="/resume/">Resume</a> <li><a href="/straßenschilder/">Straßenschilder</a> <li><a href="/map_project/">TMB 3D Map</a> <li><a href="/CallR/">CallR</a> <li><a href="/eisbach/">Eisbach</a> </ul> </div> <div id=main > <div class=franklin-content ><h1 id="straßenschilder_nn"><a href="#straßenschilder_nn" class=header-anchor >Straßenschilder NN</a></h1> <p>importing the already trained model</p> <pre><code class="python hljs">model = keras.models.load_model(<span class=hljs-string >&#x27;german_traffic_signs_model.h5&#x27;</span>)</code></pre>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+     <link rel="stylesheet" href="/libs/highlight/github.min.css">
+   
+    <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/tufte.css">
+<link rel="stylesheet" href="/css/latex.css">
+<link rel="stylesheet" href="/css/adjust.css"> <!-- sheet to overwrite some clashing styles -->
+<link rel="icon" href="/assets/lw_initials.png">
+
+     <title>Straßenschilder</title>  
+
+    <link rel="icon" type="image/png" href="/assets/lw_initials.png"> <!-- to show tab icon -->
+
+</head>
+
+<body>
+<div id="layout">
+  <div id="menu">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/resume/">Resume</a></li>
+      <li><a href="/straßenschilder/">Straßenschilder</a></li>
+      <li><a href="/map_project/">TMB 3D Map</a></li>
+      <li><a href="/CallR/">CallR</a></li>
+      <li><a href="/eisbach/">Eisbach</a></li>
+      <!-- <li><a href="/plots_mine/">nice plots</a></li> -->
+      <!-- <li><a href="/MNIST_NN/">NN with MNIST</a></li> -->
+    </ul>
+  </div>
+  <div id="main">
+
+
+
+<!-- Content appended here --><div class="franklin-content"><h1 id="straßenschilder"><a href="#straßenschilder" class="header-anchor">Straßenschilder</a></h1>
+<p>A little project on training a neural net to classify traffic signs.</p>
+<p>We have a dataset of thousands of images of german traffic signs with corresponding labels. In total there are 43 classes of images.</p>
+<p>Here is a sample of them:</p>
+
+<pre><code class="plaintext code-output">ArgumentError: Package PrettyTables not found in current path, maybe you meant `import/using .PrettyTables`.
+- Otherwise, run `import Pkg; Pkg.add("PrettyTables")` to install the PrettyTables package.
+</code></pre>
+<p>Here are some examples of images in the test data:</p>
+
+<div style="display:flex; justify-content:left;">
+  <img src="/images/9_traffic_signs.png" style="width:100%; margin:0; padding:0;">
+</div>
+
+<p>The model I trained follows the classic <a href="https://en.wikipedia.org/wiki/LeNet#Structure">LeNet-5</a> architecture, first created for digit recognition in 1989, albeit slighty adjusted. Here, we will simply import the model I have already trained.</p>
+<pre><code class="language-python">model &#61; keras.models.load_model&#40;&#39;german_traffic_signs_model.h5&#39;&#41;</code></pre>
 <p>We now load in the test data.</p>
-<pre><code class="python hljs">test = pd.read_csv(data_dir + <span class=hljs-string >&#x27;/Test.csv&#x27;</span>)
+<pre><code class="language-python">test &#61; pd.read_csv&#40;data_dir &#43; &#39;/Test.csv&#39;&#41;
 
-labels = test[<span class=hljs-string >&quot;ClassId&quot;</span>].values
-imgs = test[<span class=hljs-string >&quot;Path&quot;</span>].values
+labels &#61; test&#91;&quot;ClassId&quot;&#93;.values
+imgs &#61; test&#91;&quot;Path&quot;&#93;.values
 
-data = []
+data &#61; &#91;&#93;
 
-<span class=hljs-keyword >for</span> img <span class=hljs-keyword >in</span> imgs:
-    <span class=hljs-keyword >try</span>:
-        image = cv2.imread(data_dir + <span class=hljs-string >&#x27;/&#x27;</span> + img)
-        image_from_array = Image.fromarray(image, <span class=hljs-string >&#x27;RGB&#x27;</span>)
-        size_image = image_from_array.resize((IMG_HEIGHT, IMG_WIDTH))
-        data.append(np.array(size_image))
-    <span class=hljs-keyword >except</span>:
-        <span class=hljs-built_in >print</span>(<span class=hljs-string >&quot;Error in &quot;</span> + img)
+for img in imgs:
+    try:
+        image &#61; cv2.imread&#40;data_dir &#43; &#39;/&#39; &#43; img&#41;
+        image_from_array &#61; Image.fromarray&#40;image, &#39;RGB&#39;&#41;
+        size_image &#61; image_from_array.resize&#40;&#40;IMG_HEIGHT, IMG_WIDTH&#41;&#41;
+        data.append&#40;np.array&#40;size_image&#41;&#41;
+    except:
+        print&#40;&quot;Error in &quot; &#43; img&#41;
 
-X_test = np.array(data)
-X_test = X_test / <span class=hljs-number >255</span></code></pre>
+X_test &#61; np.array&#40;data&#41;
+X_test &#61; X_test / 255</code></pre>
 <p>And predict the results.</p>
-<pre><code class="python hljs">pred = model.predict(X_test)
-pred = np.argmax(pred, axis=<span class=hljs-number >1</span>)</code></pre>
+<pre><code class="language-python">pred &#61; model.predict&#40;X_test&#41;
+pred &#61; np.argmax&#40;pred, axis&#61;1&#41;</code></pre>
 <p>This model has a very good accuracy on the test data.</p>
-<pre><code class="python hljs"><span class=hljs-built_in >print</span>(<span class=hljs-string >&#x27;Test Data Accuracy: &#x27;</span>, accuracy_score(labels, pred))</code></pre>
+<pre><code class="language-python">print&#40;&#39;Test Data Accuracy: &#39;, accuracy_score&#40;labels, pred&#41;&#41;</code></pre>
 <p>Now let&#39;s test the model with some images from the internet.</p>
 
 <div style="display:flex; justify-content:center;">
@@ -33,34 +86,34 @@ pred = np.argmax(pred, axis=<span class=hljs-number >1</span>)</code></pre>
 </div>
 
 <p>Let&#39;s define a function to classify the images.</p>
-<pre><code class="python hljs"><span class=hljs-keyword >import</span> requests
-<span class=hljs-keyword >from</span> PIL <span class=hljs-keyword >import</span> Image
+<pre><code class="language-python">import requests
+from PIL import Image
 
-<span class=hljs-keyword >def</span> <span class="hljs-title function_">classify_german_sign</span>(<span class=hljs-params >url</span>):
-    response = requests.get(url, stream=<span class=hljs-literal >True</span>)
-    img = Image.<span class=hljs-built_in >open</span>(response.raw)
-    plt.imshow(img, cmap=plt.get_cmap(<span class=hljs-string >&#x27;gray&#x27;</span>))
-    <span class=hljs-comment ># plt.show()</span>
+def classify_german_sign&#40;url&#41;:
+    response &#61; requests.get&#40;url, stream&#61;True&#41;
+    img &#61; Image.open&#40;response.raw&#41;
+    plt.imshow&#40;img, cmap&#61;plt.get_cmap&#40;&#39;gray&#39;&#41;&#41;
+    # plt.show&#40;&#41;
 
-    img = np.asarray(img)
-    img = cv2.resize(img, (IMG_HEIGHT, IMG_WIDTH))
-    img = img / <span class=hljs-number >255</span>
-    img = img.reshape(<span class=hljs-number >1</span>, IMG_HEIGHT, IMG_WIDTH, channels)
-    <span class=hljs-comment ># predicting the class</span>
-    predicted_class = np.argmax(model.predict(img), axis=-<span class=hljs-number >1</span>)
-    <span class=hljs-comment ># print the class</span>
-    <span class=hljs-built_in >print</span>(<span class=hljs-string >&quot;This sign belongs to class:&quot;</span>, classes[predicted_class[<span class=hljs-number >0</span>]])</code></pre>
+    img &#61; np.asarray&#40;img&#41;
+    img &#61; cv2.resize&#40;img, &#40;IMG_HEIGHT, IMG_WIDTH&#41;&#41;
+    img &#61; img / 255
+    img &#61; img.reshape&#40;1, IMG_HEIGHT, IMG_WIDTH, channels&#41;
+    # predicting the class
+    predicted_class &#61; np.argmax&#40;model.predict&#40;img&#41;, axis&#61;-1&#41;
+    # print the class
+    print&#40;&quot;This sign belongs to class:&quot;, classes&#91;predicted_class&#91;0&#93;&#93;&#41;</code></pre>
 <p>Now let&#39;s test if the model classifies the images correctly.</p>
-<pre><code class="python hljs">classify_german_sign(url1)</code></pre>
-<pre><code class="plaintext hljs">1/1 [==============================] - 0s 142ms/step
+<pre><code class="language-python">classify_german_sign&#40;url1&#41;</code></pre>
+<pre><code class="plaintext code-output">1/1 [==============================] - 0s 142ms/step
 This sign belongs to class: Speed limit (50km/h)
 </code></pre>
-<pre><code class="python hljs">classify_german_sign(url2)</code></pre>
-<pre><code class="plaintext hljs">1/1 [==============================] - 0s 23ms/step
+<pre><code class="language-python">classify_german_sign&#40;url2&#41;</code></pre>
+<pre><code class="plaintext code-output">1/1 [==============================] - 0s 23ms/step
 This sign belongs to class: Speed limit (30km/h)
 </code></pre>
-<pre><code class="python hljs">classify_german_sign(url3)</code></pre>
-<pre><code class="plaintext hljs">1/1 [==============================] - 0s 20ms/step
+<pre><code class="language-python">classify_german_sign&#40;url3&#41;</code></pre>
+<pre><code class="plaintext code-output">1/1 [==============================] - 0s 20ms/step
 This sign belongs to class: Yield
 </code></pre>
 <blockquote>
@@ -72,18 +125,26 @@ This sign belongs to class: Yield
   <img src='/images/stopsign_schwer.jpeg' style="width:70%; margin:0; padding:0;">
 </div>
 
-<pre><code class="python hljs">classify_german_sign(url4)</code></pre>
-<pre><code class="plaintext hljs">1/1 [==============================] - 0s 20ms/step
+<pre><code class="language-python">classify_german_sign&#40;url4&#41;</code></pre>
+<pre><code class="plaintext code-output">1/1 [==============================] - 0s 20ms/step
 This sign belongs to class: Roundabout mandatory
 </code></pre>
 <p>The prediction is wrong.</p>
-<div class=row ><div class=container ><div class=left ><img src="/images/stoppschild.png" alt="" /></div></div>
+<div class="row"><div class="container"><div class="left"><img src="/images/stoppschild.png" alt="" /></div></div>
 <p>Under the hood, this model is a neural network trained on a collection of relatively homogenous training examples that take this form. It is not able to understand the context of the image. It is not able to classify the above image, mainly because it is very different from the training data. 
 <div style="clear: both"></div>
 </p></div>
-<div class=page-foot >
-    <a>linus wolff, personal website.</a>
+<div class="page-foot">
+    <a>linus wolff</a>
 </div>
-</div>
-        </div> 
-    </div>
+</div><!-- CONTENT ENDS HERE -->
+        </div> <!-- end of id=main -->
+    </div> <!-- end of id=layout -->
+    
+    
+        <script src="/libs/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>

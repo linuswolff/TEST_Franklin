@@ -1,0 +1,2 @@
+ArgumentError: Package PrettyTables not found in current path, maybe you meant `import/using .PrettyTables`.
+- Otherwise, run `import Pkg; Pkg.add("PrettyTables")` to install the PrettyTables package.
