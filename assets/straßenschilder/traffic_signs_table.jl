@@ -1,5 +1,8 @@
 # This file was generated, do not modify it. # hide
 #hideall
+import Pkg; Pkg.add("PrettyTables")
+import Pkg; Pkg.add("DataFrames")
+import Pkg; Pkg.add("StatsBase")
 using DataFrames, PrettyTables, StatsBase
 
 classes = Dict(0=>"Speed limit (20km/h)",

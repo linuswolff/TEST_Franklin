@@ -1,2 +1,12 @@
-ArgumentError: Package PrettyTables not found in current path, maybe you meant `import/using .PrettyTables`.
-- Otherwise, run `import Pkg; Pkg.add("PrettyTables")` to install the PrettyTables package.
+┌────┬───────────────────────────────┬────┬───────────────────────────┐
+│ ID │                          Name │ ID │                      Name │
+├────┼───────────────────────────────┼────┼───────────────────────────┤
+│ 12 │                 Priority road │ 38 │                Keep right │
+│ 23 │                 Slippery road │ 26 │           Traffic signals │
+│ 21 │                  Double curve │  0 │      Speed limit (20km/h) │
+│ 25 │                     Road work │ 22 │                Bumpy road │
+│ 32 │    End speed + passing limits │ 37 │       Go straight or left │
+│ 42 │ End no passing veh > 3.5 tons │ 24 │ Road narrows on the right │
+│ 16 │     Veh > 3.5 tons prohibited │ 40 │      Roundabout mandatory │
+│ 13 │                         Yield │ 41 │         End of no passing │
+└────┴───────────────────────────────┴────┴───────────────────────────┘

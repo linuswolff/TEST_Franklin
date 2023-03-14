@@ -41,8 +41,18 @@
 <p>We have a dataset of thousands of images of german traffic signs with corresponding labels. In total there are 43 classes of images.</p>
 <p>Here is a sample of them:</p>
 
-<pre><code class="plaintext code-output">ArgumentError: Package PrettyTables not found in current path, maybe you meant `import/using .PrettyTables`.
-- Otherwise, run `import Pkg; Pkg.add("PrettyTables")` to install the PrettyTables package.
+<pre><code class="plaintext code-output">┌────┬───────────────────────────────┬────┬───────────────────────────┐
+│ ID │                          Name │ ID │                      Name │
+├────┼───────────────────────────────┼────┼───────────────────────────┤
+│ 12 │                 Priority road │ 38 │                Keep right │
+│ 23 │                 Slippery road │ 26 │           Traffic signals │
+│ 21 │                  Double curve │  0 │      Speed limit (20km/h) │
+│ 25 │                     Road work │ 22 │                Bumpy road │
+│ 32 │    End speed + passing limits │ 37 │       Go straight or left │
+│ 42 │ End no passing veh > 3.5 tons │ 24 │ Road narrows on the right │
+│ 16 │     Veh > 3.5 tons prohibited │ 40 │      Roundabout mandatory │
+│ 13 │                         Yield │ 41 │         End of no passing │
+└────┴───────────────────────────────┴────┴───────────────────────────┘
 </code></pre>
 <p>Here are some examples of images in the test data:</p>
 
