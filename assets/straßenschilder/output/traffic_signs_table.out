@@ -1,12 +1,12 @@
-┌────┬──────────────────────────────┬────┬───────────────────────┐
-│ ID │                         Name │ ID │                  Name │
-├────┼──────────────────────────────┼────┼───────────────────────┤
-│ 25 │                    Road work │  3 │  Speed limit (60km/h) │
-│ 14 │                         Stop │ 37 │   Go straight or left │
-│ 11 │ Right-of-way at intersection │ 15 │           No vehicles │
-│ 38 │                   Keep right │ 36 │  Go straight or right │
-│ 33 │             Turn right ahead │  2 │  Speed limit (50km/h) │
-│ 40 │         Roundabout mandatory │  8 │ Speed limit (120km/h) │
-│ 18 │              General caution │ 30 │    Beware of ice/snow │
-│ 20 │        Dangerous curve right │ 19 │  Dangerous curve left │
-└────┴──────────────────────────────┴────┴───────────────────────┘
+┌────┬────────────────────────────┬────┬───────────────────────────┐
+│ ID │                       Name │ ID │                      Name │
+├────┼────────────────────────────┼────┼───────────────────────────┤
+│ 27 │                Pedestrians │ 31 │     Wild animals crossing │
+│ 21 │               Double curve │ 17 │                  No entry │
+│ 15 │                No vehicles │ 22 │                Bumpy road │
+│ 28 │          Children crossing │ 38 │                Keep right │
+│ 32 │ End speed + passing limits │  4 │      Speed limit (70km/h) │
+│ 37 │        Go straight or left │  3 │      Speed limit (60km/h) │
+│ 30 │         Beware of ice/snow │ 16 │ Veh > 3.5 tons prohibited │
+│ 18 │            General caution │  7 │     Speed limit (100km/h) │
+└────┴────────────────────────────┴────┴───────────────────────────┘
