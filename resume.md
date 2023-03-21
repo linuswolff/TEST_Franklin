@@ -18,7 +18,7 @@
 	</script>
 </head>
 <body>
-    <button onclick="switchVersion()">english / german</button>
+    <button class="resume" onclick="switchVersion()">english / german</button>
     <br></br>
 	<object id="pdfObject" data="/resume_english.pdf" type="application/pdf" width="750px" height="1061px">
 	</object>

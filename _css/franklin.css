@@ -56,7 +56,7 @@ html {
 .franklin-content .page-foot a {
   text-decoration: none;
   color: #a6a2a0;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 .page-foot {
@@ -344,7 +344,7 @@ code {
 
 /* button for resume page */
 
-.franklin-content button {
+.franklin-content button.resume {
   appearance: button;
   background-color: #000;
   background-image: none;
@@ -371,26 +371,26 @@ code {
   white-space: nowrap;
 }
 
-.franklin-content button:focus {
+.franklin-content button.resume:focus {
   text-decoration: none;
 }
 
-.franklin-content button:hover {
+.franklin-content button.resume:hover {
   text-decoration: none;
 }
 
-.franklin-content button:active {
+.franklin-content button.resume:active {
   box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
   outline: 0;
 }
 
-.franklin-content button:not([disabled]):active {
+.franklin-content button.resume:not([disabled]):active {
   box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
   transform: translate(2px, 2px);
 }
 
 @media (min-width: 768px) {
-.franklin-content button {
+.franklin-content button.resume {
     padding: 12px 50px;
   }
 }

@@ -99,3 +99,26 @@
 			border: 1px solid black;
 			margin: 10px;
 		} */
+
+
+    button.foot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      background-color: #333;
+      color: #fff;
+      transition: all 0.2s ease-in-out;
+      cursor:pointer;
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+
+    
+    button.foot i {
+      font-size: 10px;
+    }
+    
