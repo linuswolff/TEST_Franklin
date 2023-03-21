@@ -26,7 +26,7 @@
       <li><a href="/resume/">Resume</a></li>
       <li><a href="/straßenschilder/">Straßenschilder</a></li>
       <li><a href="/map_project/">TMB 3D Map</a></li>
-      <li><a href="/CallR/">CallR</a></li>
+      <!-- <li><a href="/CallR/">CallR</a></li> -->
       <li><a href="/eisbach/">Eisbach</a></li>
       <li><a href="/thesis/">Thesis</a></li>
       <li><a href="https://sql-translator.onrender.com/">translate SQL</a></li>
@@ -42,18 +42,18 @@
 <p>We have a dataset of thousands of images of german traffic signs with corresponding labels. In total there are 43 classes of images.</p>
 <p>Here is a sample of them:</p>
 
-<pre><code class="plaintext code-output">┌────┬────────────────────────────┬────┬───────────────────────────┐
-│ ID │                       Name │ ID │                      Name │
-├────┼────────────────────────────┼────┼───────────────────────────┤
-│ 27 │                Pedestrians │ 31 │     Wild animals crossing │
-│ 21 │               Double curve │ 17 │                  No entry │
-│ 15 │                No vehicles │ 22 │                Bumpy road │
-│ 28 │          Children crossing │ 38 │                Keep right │
-│ 32 │ End speed + passing limits │  4 │      Speed limit (70km/h) │
-│ 37 │        Go straight or left │  3 │      Speed limit (60km/h) │
-│ 30 │         Beware of ice/snow │ 16 │ Veh > 3.5 tons prohibited │
-│ 18 │            General caution │  7 │     Speed limit (100km/h) │
-└────┴────────────────────────────┴────┴───────────────────────────┘
+<pre><code class="plaintext code-output">┌────┬───────────────────────┬────┬───────────────────────────────┐
+│ ID │                  Name │ ID │                          Name │
+├────┼───────────────────────┼────┼───────────────────────────────┤
+│  3 │  Speed limit (60km/h) │ 23 │                 Slippery road │
+│ 29 │     Bicycles crossing │ 30 │            Beware of ice/snow │
+│ 25 │             Road work │ 19 │          Dangerous curve left │
+│ 33 │      Turn right ahead │ 42 │ End no passing veh > 3.5 tons │
+│ 41 │     End of no passing │ 16 │     Veh > 3.5 tons prohibited │
+│ 22 │            Bumpy road │ 39 │                     Keep left │
+│ 37 │   Go straight or left │ 26 │               Traffic signals │
+│ 31 │ Wild animals crossing │ 17 │                      No entry │
+└────┴───────────────────────┴────┴───────────────────────────────┘
 </code></pre>
 <p>Here are some examples of images in the test data:</p>
 
@@ -145,8 +145,18 @@ This sign belongs to class: Roundabout mandatory
 <p>Under the hood, this model is a neural network trained on a collection of relatively homogenous training examples that take this form. It is not able to understand the context of the image. It is not able to classify the above image, mainly because it is very different from the training data. 
 <div style="clear: both"></div>
 </p></div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div class="page-foot">
-    <a>linus wolff</a>
+    <a>linus wolff, built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.</a>
+    <br></br>
+        
+        <button class="foot" onclick="location.href='https:github.com/linuswolff';">
+        <i style="font-size:20px" class="fa">&#xf09b;</i>
+        </button>
+        <button class="foot" onclick="location.href='mailto:linuswolff@outlook.com';">
+            <i style="font-size:20px" class="fa">&#xf1fa;</i>
+            </button>
 </div>
 </div><!-- CONTENT ENDS HERE -->
         </div> <!-- end of id=main -->

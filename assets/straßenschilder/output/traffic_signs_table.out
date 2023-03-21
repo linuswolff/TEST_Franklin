@@ -1,12 +1,12 @@
-┌────┬────────────────────────────┬────┬───────────────────────────┐
-│ ID │                       Name │ ID │                      Name │
-├────┼────────────────────────────┼────┼───────────────────────────┤
-│ 27 │                Pedestrians │ 31 │     Wild animals crossing │
-│ 21 │               Double curve │ 17 │                  No entry │
-│ 15 │                No vehicles │ 22 │                Bumpy road │
-│ 28 │          Children crossing │ 38 │                Keep right │
-│ 32 │ End speed + passing limits │  4 │      Speed limit (70km/h) │
-│ 37 │        Go straight or left │  3 │      Speed limit (60km/h) │
-│ 30 │         Beware of ice/snow │ 16 │ Veh > 3.5 tons prohibited │
-│ 18 │            General caution │  7 │     Speed limit (100km/h) │
-└────┴────────────────────────────┴────┴───────────────────────────┘
+┌────┬───────────────────────┬────┬───────────────────────────────┐
+│ ID │                  Name │ ID │                          Name │
+├────┼───────────────────────┼────┼───────────────────────────────┤
+│  3 │  Speed limit (60km/h) │ 23 │                 Slippery road │
+│ 29 │     Bicycles crossing │ 30 │            Beware of ice/snow │
+│ 25 │             Road work │ 19 │          Dangerous curve left │
+│ 33 │      Turn right ahead │ 42 │ End no passing veh > 3.5 tons │
+│ 41 │     End of no passing │ 16 │     Veh > 3.5 tons prohibited │
+│ 22 │            Bumpy road │ 39 │                     Keep left │
+│ 37 │   Go straight or left │ 26 │               Traffic signals │
+│ 31 │ Wild animals crossing │ 17 │                      No entry │
+└────┴───────────────────────┴────┴───────────────────────────────┘
