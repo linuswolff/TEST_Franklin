@@ -42,18 +42,18 @@
 <p>We have a dataset of thousands of images of german traffic signs with corresponding labels. In total there are 43 classes of images.</p>
 <p>Here is a sample of them:</p>
 
-<pre><code class="plaintext code-output">┌────┬───────────────────────┬────┬───────────────────────────────┐
-│ ID │                  Name │ ID │                          Name │
-├────┼───────────────────────┼────┼───────────────────────────────┤
-│  3 │  Speed limit (60km/h) │ 23 │                 Slippery road │
-│ 29 │     Bicycles crossing │ 30 │            Beware of ice/snow │
-│ 25 │             Road work │ 19 │          Dangerous curve left │
-│ 33 │      Turn right ahead │ 42 │ End no passing veh > 3.5 tons │
-│ 41 │     End of no passing │ 16 │     Veh > 3.5 tons prohibited │
-│ 22 │            Bumpy road │ 39 │                     Keep left │
-│ 37 │   Go straight or left │ 26 │               Traffic signals │
-│ 31 │ Wild animals crossing │ 17 │                      No entry │
-└────┴───────────────────────┴────┴───────────────────────────────┘
+<pre><code class="plaintext code-output">┌────┬──────────────────────────────┬────┬──────────────────────────────┐
+│ ID │                         Name │ ID │                         Name │
+├────┼──────────────────────────────┼────┼──────────────────────────────┤
+│ 41 │            End of no passing │ 22 │                   Bumpy road │
+│ 31 │        Wild animals crossing │  2 │         Speed limit (50km/h) │
+│ 29 │            Bicycles crossing │  1 │         Speed limit (30km/h) │
+│ 40 │         Roundabout mandatory │ 33 │             Turn right ahead │
+│  8 │        Speed limit (120km/h) │ 35 │                   Ahead only │
+│ 11 │ Right-of-way at intersection │ 10 │ No passing veh over 3.5 tons │
+│ 26 │              Traffic signals │ 15 │                  No vehicles │
+│ 38 │                   Keep right │ 34 │              Turn left ahead │
+└────┴──────────────────────────────┴────┴──────────────────────────────┘
 </code></pre>
 <p>Here are some examples of images in the test data:</p>
 
@@ -151,7 +151,7 @@ This sign belongs to class: Roundabout mandatory
     <a>linus wolff, built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.</a>
     <br></br>
         
-        <button class="foot" onclick="location.href='https:github.com/linuswolff';">
+        <button class="foot" onclick="location.href='https://github.com/linuswolff';">
         <i style="font-size:20px" class="fa">&#xf09b;</i>
         </button>
         <button class="foot" onclick="location.href='mailto:linuswolff@outlook.com';">
