@@ -1,12 +1,12 @@
-┌────┬─────────────────────────────┬────┬──────────────────────────────┐
-│ ID │                        Name │ ID │                         Name │
-├────┼─────────────────────────────┼────┼──────────────────────────────┤
-│ 28 │           Children crossing │ 19 │         Dangerous curve left │
-│ 17 │                    No entry │ 33 │             Turn right ahead │
-│ 32 │  End speed + passing limits │ 31 │        Wild animals crossing │
-│ 34 │             Turn left ahead │ 11 │ Right-of-way at intersection │
-│ 38 │                  Keep right │ 25 │                    Road work │
-│  7 │       Speed limit (100km/h) │ 40 │         Roundabout mandatory │
-│  6 │ End of speed limit (80km/h) │ 24 │    Road narrows on the right │
-│ 23 │               Slippery road │ 15 │                  No vehicles │
-└────┴─────────────────────────────┴────┴──────────────────────────────┘
+┌────┬──────────────────────────────┬────┬───────────────────────────────┐
+│ ID │                         Name │ ID │                          Name │
+├────┼──────────────────────────────┼────┼───────────────────────────────┤
+│ 14 │                         Stop │ 22 │                    Bumpy road │
+│ 20 │        Dangerous curve right │  5 │          Speed limit (80km/h) │
+│ 18 │              General caution │ 34 │               Turn left ahead │
+│ 29 │            Bicycles crossing │  3 │          Speed limit (60km/h) │
+│ 11 │ Right-of-way at intersection │ 17 │                      No entry │
+│  4 │         Speed limit (70km/h) │ 42 │ End no passing veh > 3.5 tons │
+│ 37 │          Go straight or left │ 38 │                    Keep right │
+│ 30 │           Beware of ice/snow │ 10 │  No passing veh over 3.5 tons │
+└────┴──────────────────────────────┴────┴───────────────────────────────┘
