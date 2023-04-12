@@ -1,12 +1,12 @@
-┌────┬──────────────────────────────┬────┬──────────────────────────────┐
-│ ID │                         Name │ ID │                         Name │
-├────┼──────────────────────────────┼────┼──────────────────────────────┤
-│ 41 │            End of no passing │ 22 │                   Bumpy road │
-│ 31 │        Wild animals crossing │  2 │         Speed limit (50km/h) │
-│ 29 │            Bicycles crossing │  1 │         Speed limit (30km/h) │
-│ 40 │         Roundabout mandatory │ 33 │             Turn right ahead │
-│  8 │        Speed limit (120km/h) │ 35 │                   Ahead only │
-│ 11 │ Right-of-way at intersection │ 10 │ No passing veh over 3.5 tons │
-│ 26 │              Traffic signals │ 15 │                  No vehicles │
-│ 38 │                   Keep right │ 34 │              Turn left ahead │
-└────┴──────────────────────────────┴────┴──────────────────────────────┘
+┌────┬───────────────────────────┬────┬───────────────────────┐
+│ ID │                      Name │ ID │                  Name │
+├────┼───────────────────────────┼────┼───────────────────────┤
+│ 40 │      Roundabout mandatory │ 36 │  Go straight or right │
+│ 16 │ Veh > 3.5 tons prohibited │  8 │ Speed limit (120km/h) │
+│ 39 │                 Keep left │ 34 │       Turn left ahead │
+│ 33 │          Turn right ahead │ 27 │           Pedestrians │
+│  4 │      Speed limit (70km/h) │  0 │  Speed limit (20km/h) │
+│ 26 │           Traffic signals │  7 │ Speed limit (100km/h) │
+│ 25 │                 Road work │ 37 │   Go straight or left │
+│ 17 │                  No entry │ 15 │           No vehicles │
+└────┴───────────────────────────┴────┴───────────────────────┘
