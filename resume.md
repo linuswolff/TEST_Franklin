@@ -9,7 +9,7 @@
 	<script>
 		function switchVersion() {
 			var pdfObject = document.getElementById("pdfObject");
-			if (pdfObject.data == "/resume_english.pdf") {
+			if (pdfObject.data.endsWith("english.pdf")) {
 				pdfObject.data = "/resume_german.pdf";
 			} else {
 				pdfObject.data = "/resume_english.pdf";
@@ -18,8 +18,8 @@
 	</script>
 </head>
 <body>
-    <button class="resume" onclick="switchVersion()">english / german</button>
-    <br></br>
+	<button class="resume" onclick="switchVersion()">english / german</button>
+	<br></br>
 	<object id="pdfObject" data="/resume_english.pdf" type="application/pdf" width="750px" height="1061px">
 	</object>
 </body>
