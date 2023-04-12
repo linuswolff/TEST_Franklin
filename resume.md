@@ -10,9 +10,9 @@
 		function switchVersion() {
 			var pdfObject = document.getElementById("pdfObject");
 			if (pdfObject.data == "/resume_english.pdf") {
-				pdfObject.data = "/resume_english.pdf";
-			} else {
 				pdfObject.data = "/resume_german.pdf";
+			} else {
+				pdfObject.data = "/resume_english.pdf";
 			}
 		}
 	</script>
