@@ -12,7 +12,7 @@
 			if (pdfObject.data == "/resume_english.pdf") {
 				pdfObject.data = "/resume_english.pdf";
 			} else {
-				pdfObject.data = "/resume_english.pdf";
+				pdfObject.data = "/resume_german.pdf";
 			}
 		}
 	</script>
